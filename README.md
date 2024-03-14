@@ -1,3 +1,13 @@
+# Databases & SQL Overview with examples <!-- omit in toc -->
+
+## Contents <!-- omit in toc -->
+
+- [1. What's a Database?](#1-whats-a-database)
+  - [1.1. Collection of data](#11-collection-of-data)
+- [2. SQL Structure](#2-sql-structure)
+- [3. Core SQL Database Characteristics](#3-core-sql-database-characteristics)
+- [4. SQL Queries](#4-sql-queries)
+
 # 1. What's a Database?
 
 ## 1.1. Collection of data
@@ -18,3 +28,21 @@
 - Find People with Name Jamer Miller.
 - Find all **Phone Number** with **Area Code** 415.
 - Find all **People** who have a 5-letter **First Name**.
+
+# 2. SQL Structure
+
+- Tables.
+- Rows.
+- Columns.
+- Records.
+- Relationships.
+
+![SQL Tables](/Images/SQLTables.png)
+
+# 3. Core SQL Database Characteristics
+
+![SQL Database Characteristic](/Images/SQLDatabaseCharacteristics.png)
+
+# 4. SQL Queries
+
+![SQL Queries](/Images/SQLQueries.png)
