@@ -46,13 +46,26 @@
     - [8.13.2. How We Use Joins](#8132-how-we-use-joins)
     - [8.13.3. How We Use SET Operators](#8133-how-we-use-set-operators)
     - [8.13.4. Summary Table](#8134-summary-table)
-- [9. Advanced SQL Techniques](#9-advanced-sql-techniques)
-  - [9.1. Subqueries](#91-subqueries)
-  - [9.2. CTE (Common Table Expression)](#92-cte-common-table-expression)
-  - [9.3. Views](#93-views)
-  - [9.4. Temporary Tables \& CTAS](#94-temporary-tables--ctas)
-  - [9.5. Stored Procedures](#95-stored-procedures)
-  - [9.6. Triggers](#96-triggers)
+- [9. Database Table Normalization](#9-database-table-normalization)
+  - [9.1. Non-Normalized Table (UNF)](#91-non-normalized-table-unf)
+  - [9.2. First Normal Form (1NF)](#92-first-normal-form-1nf)
+  - [9.3. Second Normal Form (2NF)](#93-second-normal-form-2nf)
+    - [9.3.1. Customers Table](#931-customers-table)
+    - [9.3.2. Orders Table](#932-orders-table)
+    - [9.3.3. OrderItems Table](#933-orderitems-table)
+  - [9.4. Third Normal Form (3NF)](#94-third-normal-form-3nf)
+    - [9.4.1. Customers](#941-customers)
+    - [9.4.2. Products](#942-products)
+    - [9.4.3. Orders](#943-orders)
+    - [9.4.4. OrderItems (Relationship Table)](#944-orderitems-relationship-table)
+  - [9.5. Final Result - Database in 3NF](#95-final-result---database-in-3nf)
+- [10. Advanced SQL Techniques](#10-advanced-sql-techniques)
+  - [10.1. Subqueries](#101-subqueries)
+  - [10.2. CTE (Common Table Expression)](#102-cte-common-table-expression)
+  - [10.3. Views](#103-views)
+  - [10.4. Temporary Tables \& CTAS](#104-temporary-tables--ctas)
+  - [10.5. Stored Procedures](#105-stored-procedures)
+  - [10.6. Triggers](#106-triggers)
 
 # 1. Introduction
 
@@ -436,42 +449,178 @@
 | JOINS         | Columns (Horizontal) | Based on a Key Column (ID)     |
 | SET Operators | Rows (Vertical)      | Based on same column structure |
 
-# 9. Advanced SQL Techniques
+# 9. Database Table Normalization
+
+- This example demonstrates how a database evolves from **Non-Normalized Form (UNF)** to **First (1NF)**, **Second (2NF)**, and **Third Normal Form (3NF)**.
+
+## 9.1. Non-Normalized Table (UNF)
+
+- **Problems**
+  - Repeating groups (multiple products in one column).
+  - Mixed entities (customer + order + product).
+  - Difficult to query and maintain.
+
+| OrderID | CustomerName | CustomerPhone | Products                   | Total |
+| ------: | ------------ | ------------- | -------------------------- | ----: |
+|    1001 | Ana Silva    | 9999-1111     | Notebook, Mouse            |  3500 |
+|    1002 | João Souza   | 9888-2222     | Keyboard                   |   200 |
+|    1003 | Ana Silva    | 9999-1111     | Monitor, HDMI Cable, Mouse |  1200 |
+
+- **Issues**
+  - "Products" contains multiple values (not atomic).
+  - Customer data repeated.
+  - No way to relate individual products.
+
+## 9.2. First Normal Form (1NF)
+
+- **Rule**
+  - Each field must contain **atomic (indivisible) values**.
+  - No repeating groups.
+
+| OrderID | CustomerName | CustomerPhone | Product    | Total |
+| ------: | ------------ | ------------- | ---------- | ----: |
+|    1001 | Ana Silva    | 9999-1111     | Notebook   |  3500 |
+|    1001 | Ana Silva    | 9999-1111     | Mouse      |  3500 |
+|    1002 | João Souza   | 9888-2222     | Keyboard   |   200 |
+|    1003 | Ana Silva    | 9999-1111     | Monitor    |  1200 |
+|    1003 | Ana Silva    | 9999-1111     | HDMI Cable |  1200 |
+|    1003 | Ana Silva    | 9999-1111     | Mouse      |  1200 |
+
+- **Still Problems**
+  - Customer data duplicated.
+  - `Total` depends only on `OrderID`.
+  - Partial dependency exists.
+
+## 9.3. Second Normal Form (2NF)
+
+- **Rule**
+  - Must be in **1NF**.
+  - Remove **partial dependencies**.
+  - Data must depend on the **entire primary key**.
+
+### 9.3.1. Customers Table
+
+| CustomerID | CustomerName | CustomerPhone |
+| ---------: | ------------ | ------------- |
+|          1 | Ana Silva    | 9999-1111     |
+|          2 | João Souza   | 9888-2222     |
+
+### 9.3.2. Orders Table
+
+| OrderID | CustomerID | Total |
+| ------: | ---------: | ----: |
+|    1001 |          1 |  3500 |
+|    1002 |          2 |   200 |
+|    1003 |          1 |  1200 |
+
+### 9.3.3. OrderItems Table
+
+| OrderID | Product    |
+| ------: | ---------- |
+|    1001 | Notebook   |
+|    1001 | Mouse      |
+|    1002 | Keyboard   |
+|    1003 | Monitor    |
+|    1003 | HDMI Cable |
+|    1003 | Mouse      |
+
+- **Still Problem:**
+  - Product names repeated as text.
+  - Product data should be isolated.
+
+## 9.4. Third Normal Form (3NF)
+
+- **Rule:**
+  - Must be in **2NF**.
+  - Remove **transitive dependencies**.
+  - Non-key fields must depend **only on the key**.
+
+### 9.4.1. Customers
+
+| CustomerID | Name       | Phone     |
+| ---------: | ---------- | --------- |
+|          1 | Ana Silva  | 9999-1111 |
+|          2 | João Souza | 9888-2222 |
+
+### 9.4.2. Products
+
+| ProductID | ProductName |
+| --------: | ----------- |
+|        10 | Notebook    |
+|        11 | Mouse       |
+|        12 | Keyboard    |
+|        13 | Monitor     |
+|        14 | HDMI Cable  |
+
+### 9.4.3. Orders
+
+| OrderID | CustomerID | Total |
+| ------: | ---------: | ----: |
+|    1001 |          1 |  3500 |
+|    1002 |          2 |   200 |
+|    1003 |          1 |  1200 |
+
+### 9.4.4. OrderItems (Relationship Table)
+
+| OrderID | ProductID |
+| ------: | --------: |
+|    1001 |        10 |
+|    1001 |        11 |
+|    1002 |        12 |
+|    1003 |        13 |
+|    1003 |        14 |
+|    1003 |        11 |
+
+## 9.5. Final Result - Database in 3NF
+
+- **The database now has**
+  - No redundancy.
+  - Clear relationships (Foreign Keys).
+  - Better performance.
+  - Easier maintenance.
+  - Correct relational structure.
+- **It makes databases**
+  - More efficient.
+  - More reliable.
+  - Easier to scale.
+  - Easier to understand.
+
+# 10. Advanced SQL Techniques
 
 - As we move into advanced data environments, we often face challenges like high complexity, performance issues, database stress, and security risks. To manage these, we use specialized tools to simplify our queries and improve efficiency.
 
-## 9.1. Subqueries
+## 10.1. Subqueries
 
 - We use a Subquery (or Inner Query) to perform a calculation that will be used by the main query. It is a query nested inside another statement.
   - **Where we use them:** We can place subqueries in the `SELECT`, `FROM`, or `WHERE` clauses.
   - **How they work:** The database engine typically executes the inner query first and passes the result to the outer query.
 
-## 9.2. CTE (Common Table Expression)
+## 10.2. CTE (Common Table Expression)
 
 - When our queries become too long or hard to read, we use a **CTE**. We define a **CTE** using the `WITH` keyword, creating a temporary result set that we can reference within our main query.
   - **Benefits:** We find CTEs much easier to maintain and read compared to nested subqueries.
   - **Recursive CTEs:** We can even use them to query hierarchical data, like an organizational chart.
 
-## 9.3. Views
+## 10.3. Views
 
 - We use Views to save a complex query as a **Virtual Table**.
   - **No Data Storage:** A view doesn't store data itself; it stores the query.
     - Every time we call the view, it runs the underlying script.
   - **Security:** We use views to give users access to specific columns without showing them the entire base table.
 
-## 9.4. Temporary Tables & CTAS
+## 10.4. Temporary Tables & CTAS
 
 - Sometimes we need to physically store a result set for a short period.
   - **Temp Tables:** We use these for complex multi-step transformations. They only exist during our current session.
   - **CTAS (Create Table As Select):** We use this shortcut to create a new permanent table and populate it with data from a query in one single step.
 
-## 9.5. Stored Procedures
+## 10.5. Stored Procedures
 
 - We use Stored Procedures to save a batch of SQL statements that we can execute repeatedly.
   - **Parameters:** We can pass values into a procedure to make it dynamic.
   - **Logic:** Unlike views, procedures allow us to use programming logic like Error Handling (TRY/CATCH) and Flow Control (IF/ELSE).
 
-## 9.6. Triggers
+## 10.6. Triggers
 
 - We use Triggers to automatically execute a block of code when a specific event occurs in the database, such as an `INSERT`, `UPDATE`, or `DELETE`.
 - **Use Case:** We often use triggers for maintaining audit logs or enforcing complex business rules automatically.
