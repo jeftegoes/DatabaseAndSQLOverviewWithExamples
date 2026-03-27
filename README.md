@@ -59,13 +59,21 @@
     - [9.4.3. Orders](#943-orders)
     - [9.4.4. OrderItems (Relationship Table)](#944-orderitems-relationship-table)
   - [9.5. Final Result - Database in 3NF](#95-final-result---database-in-3nf)
-- [10. Advanced SQL Techniques](#10-advanced-sql-techniques)
-  - [10.1. Subqueries](#101-subqueries)
-  - [10.2. CTE (Common Table Expression)](#102-cte-common-table-expression)
-  - [10.3. Views](#103-views)
-  - [10.4. Temporary Tables \& CTAS](#104-temporary-tables--ctas)
-  - [10.5. Stored Procedures](#105-stored-procedures)
-  - [10.6. Triggers](#106-triggers)
+- [10. Row Level Functions](#10-row-level-functions)
+  - [10.1. String Functions](#101-string-functions)
+  - [10.2. Date \& Time Functions](#102-date--time-functions)
+  - [10.3. NULL Functions](#103-null-functions)
+  - [10.4. Case Statement (Conditional Logic)](#104-case-statement-conditional-logic)
+- [11. Aggregation Analytical Functions](#11-aggregation-analytical-functions)
+  - [11.1. Aggregate Functions](#111-aggregate-functions)
+  - [11.2. Group by](#112-group-by)
+- [12. Advanced SQL Techniques](#12-advanced-sql-techniques)
+  - [12.1. Subqueries](#121-subqueries)
+  - [12.2. CTE (Common Table Expression)](#122-cte-common-table-expression)
+  - [12.3. Views](#123-views)
+  - [12.4. Temporary Tables \& CTAS](#124-temporary-tables--ctas)
+  - [12.5. Stored Procedures](#125-stored-procedures)
+  - [12.6. Triggers](#126-triggers)
 
 # 1. Introduction
 
@@ -401,7 +409,8 @@
 
 ## 8.13. SQL JOINS & SET Operators: Combining Data
 
-- Why Do We Combine Data?In relational databases, data is often spread across multiple tables to stay organized.
+- **Why Do We Combine Data?**
+  - In relational databases, data is often spread across multiple tables to stay organized.
 - When we need to see the "Big Picture," we must recombine this data.
 - We generally do this for two reasons:
   - **Recombining Data:** Bringing together customers, addresses, and orders to get a complete view.
@@ -412,10 +421,10 @@
 - We have two primary ways to bring data together, depending on whether we want to add more columns or more rows
 - **JOINS (Adding Columns)**
   - We use JOINS when we want to link tables horizontally based on a Key Column (a common piece of information like an ID).
-    - Inner Join: We use this to return only the records that have matching values in both tables.
-    - Left Join: We use this to keep all records from the left table and the matched records from the right table.
-    - Right Join: We use this to keep all records from the right table and the matched records from the left table.
-    - Full Join: We use this to return all records when there is a match in either the left or right table.
+    - `Inner Join` - We use this to return only the records that have matching values in both tables.
+    - `Left Join` - We use this to keep all records from the left table and the matched records from the right table.
+    - `Right Join` - We use this to keep all records from the right table and the matched records from the left table.
+    - `Full Join` - We use this to return all records when there is a match in either the left or right table.
 - **SET Operators (Adding Rows)**
   - We use SET Operators when we want to stack the results of two queries vertically.
   - For this to work, we must ensure both queries have the same number of columns and compatible data types.
@@ -585,42 +594,114 @@
   - Easier to scale.
   - Easier to understand.
 
-# 10. Advanced SQL Techniques
+# 10. Row Level Functions
+
+- Functions in SQL are used to clean, transform, and analyze data.
+- They operate by taking input values and producing a specific output.
+
+## 10.1. String Functions
+
+- These functions manipulate, calculate, or extract text data:
+  | Category | Function | Description |
+  |--------------|-----------|-------------------------------------------------------------------------|
+  | Manipulation | `CONCAT` | Combines multiple strings into one (e.g., merging First and Last Name). |
+  | | `UPPER` | Converts all characters to uppercase. |
+  | | `LOWER` | Converts all characters to lowercase. |
+  | | `TRIM` | Removes leading and trailing spaces. |
+  | | `REPLACE` | Swaps a specific character or substring with a new one. |
+  | Calculation | `LEN` or `LENGTH` | Counts the total number of characters in a string. |
+  | Extraction | `LEFT` | Extracts a specific number of characters from the start of a string. |
+  | | `RIGHT` | Extracts a specific number of characters from the end of a string. |
+  | | `SUBSTRING` | Extracts a part of a string starting at a specified position. |
+
+## 10.2. Date & Time Functions
+
+- Used for various operations on date and time values:
+
+- **Calculations**
+  - `DATEADD` - Adds a specific interval (e.g., 2 years) to a date.
+  - `DATEDIFF` - Returns the difference between two dates.
+- **Extraction**
+  - `YEAR, MONTH, DAY` - Quick functions to pull specific parts of a date.
+  - `DATEPART` - Returns a specific part of a date as an integer.
+  - `DATENAME` - Returns a specific part of a date as a string (e.g., "August").
+  - `DATETRUNC` - Truncates a date to a specified part (e.g., the first day of the month).
+- **Format & Casting**
+  - `FORMAT` - Formats a value based on a specific culture or style (e.g., 'dd/MM/yyyy').
+  - `CONVERT` - Changes a value's data type and allows for specific styles.
+  - `CAST` - A basic function to change data types (no format can be specified).
+- **Validation**
+  - `ISDATE` - Checks if a value is a valid date.
+
+## 10.3. NULL Functions
+
+- Designed to handle missing or NULL data points:
+  - `ISNULL` - Replaces a NULL with a specified value.
+  - `COALESCE` - Returns the first non-NULL value from a list of expressions.
+  - `NULLIF` - Returns NULL if two values are equal; otherwise, it returns the first value.
+  - `IS NULL` - The standard way to filter for rows that contain NULL values (instead of using = NULL).
+
+## 10.4. Case Statement (Conditional Logic)
+
+- The CASE statement is used for data transformation and deriving new columns based on conditions:
+  - Standard Logic: Uses WHEN, THEN, and ELSE to evaluate conditions (e.g., if Sales >= 100, then 'High').
+  - Standardization: Useful for mapping inconsistent values to a standard format (e.g., 'Germany' to 'DE').
+  - Nested Functions: Functions can be nested, where the output of one function becomes the input for another.
+    - For example: LEN(LOWER(LEFT('Maria', 2))).
+
+# 11. Aggregation Analytical Functions
+
+## 11.1. Aggregate Functions
+
+| Function | Purpose                               | Compatible Data Types |
+| -------- | ------------------------------------- | --------------------- |
+| COUNT    | Counts the number of rows in a group. | Any Type              |
+| SUM      | Adds up all values in a column.       | Numeric Only          |
+| AVG      | Calculates the average of values.     | Numeric Only          |
+| MAX      | Finds the highest value.              | Any Type              |
+| MIN      | Finds the lowest value.               | Any Type              |
+
+## 11.2. Group by
+
+- **Collapsing Rows:** The primary function of GROUP BY is to collapse multiple groups of rows into a single summary row.
+- **Group-Level Calculations:** Because it combines rows, the calculations performed are known as Group-Level-Calculations.
+
+# 12. Advanced SQL Techniques
 
 - As we move into advanced data environments, we often face challenges like high complexity, performance issues, database stress, and security risks. To manage these, we use specialized tools to simplify our queries and improve efficiency.
 
-## 10.1. Subqueries
+## 12.1. Subqueries
 
 - We use a Subquery (or Inner Query) to perform a calculation that will be used by the main query. It is a query nested inside another statement.
   - **Where we use them:** We can place subqueries in the `SELECT`, `FROM`, or `WHERE` clauses.
   - **How they work:** The database engine typically executes the inner query first and passes the result to the outer query.
 
-## 10.2. CTE (Common Table Expression)
+## 12.2. CTE (Common Table Expression)
 
 - When our queries become too long or hard to read, we use a **CTE**. We define a **CTE** using the `WITH` keyword, creating a temporary result set that we can reference within our main query.
   - **Benefits:** We find CTEs much easier to maintain and read compared to nested subqueries.
   - **Recursive CTEs:** We can even use them to query hierarchical data, like an organizational chart.
 
-## 10.3. Views
+## 12.3. Views
 
 - We use Views to save a complex query as a **Virtual Table**.
   - **No Data Storage:** A view doesn't store data itself; it stores the query.
     - Every time we call the view, it runs the underlying script.
   - **Security:** We use views to give users access to specific columns without showing them the entire base table.
 
-## 10.4. Temporary Tables & CTAS
+## 12.4. Temporary Tables & CTAS
 
 - Sometimes we need to physically store a result set for a short period.
   - **Temp Tables:** We use these for complex multi-step transformations. They only exist during our current session.
   - **CTAS (Create Table As Select):** We use this shortcut to create a new permanent table and populate it with data from a query in one single step.
 
-## 10.5. Stored Procedures
+## 12.5. Stored Procedures
 
 - We use Stored Procedures to save a batch of SQL statements that we can execute repeatedly.
   - **Parameters:** We can pass values into a procedure to make it dynamic.
   - **Logic:** Unlike views, procedures allow us to use programming logic like Error Handling (TRY/CATCH) and Flow Control (IF/ELSE).
 
-## 10.6. Triggers
+## 12.6. Triggers
 
 - We use Triggers to automatically execute a block of code when a specific event occurs in the database, such as an `INSERT`, `UPDATE`, or `DELETE`.
 - **Use Case:** We often use triggers for maintaining audit logs or enforcing complex business rules automatically.
