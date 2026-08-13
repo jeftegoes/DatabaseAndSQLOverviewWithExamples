@@ -1,0 +1,59 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Page-1" id="QibM5z_L6JaBQH1QhrwF">
+    <mxGraphModel dx="1224" dy="1226" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#FF0000,#EDEDED);strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="490" width="190" x="820" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontStyle=1;fontColor=#FF0000;" value="Heap" vertex="1">
+          <mxGeometry height="30" width="60" x="885" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-5" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 0&lt;/h1&gt;&lt;p&gt;1,Jefté,1/2/1991,$100,000 | 2,Brenno,3/2/2016,$200,000 | 3,Brunno,5/2/2026,$300,000&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="830" y="197" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-6" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 1&lt;/h1&gt;&lt;p&gt;( Rows 4,5,6 ) ......&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="830" y="317" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-7" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 2&lt;/h1&gt;&lt;p&gt;( Rows 7,8,9 ) ......&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="830" y="437" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-8" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 333&lt;/h1&gt;&lt;p&gt;More rows....1000,10000 ,Bárbara,1/27/1988,$250,000&lt;/p&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="830" y="557" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#0000FF,#EDEDED);strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="520" width="190" x="350" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-11" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 0&lt;/h1&gt;&lt;p&gt;10 (1,0) | 20 (2,0) | 30 (3,0)&amp;nbsp;&lt;/p&gt;&lt;p&gt;40 (4,1) | 50 (5,1) | 60 (6,1)&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;70 (7,2) | 80 (8,2) | 90 (9,2)&lt;/span&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="133" width="170" x="360" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-12" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 1&lt;/h1&gt;&lt;p&gt;100 (10,3) | 110 (11,3) | 120 (12,3)&amp;nbsp;&lt;/p&gt;&lt;p&gt;130 (13,4) | 140 (14,4) | 150 (15,4)&amp;nbsp;&lt;/p&gt;&lt;p&gt;160 (16,5) | 170 (17,5) | 180 (18,5)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="173" width="170" x="360" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-14" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page N&lt;/h1&gt;&lt;p&gt;9920 (992,331) | 9930 (993,331) | 9940 (994,331)&amp;nbsp;&lt;/p&gt;&lt;p&gt;9950 (995,332) | 9960 (996,332) | 9970 (997,332)&amp;nbsp;&lt;/p&gt;&lt;p&gt;9980 (998,333) | 9990 (999,333) | 10000 (1000,333)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="177" width="170" x="360" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-17" edge="1" parent="1" source="CRnnkCdkc5vBZf-O_mlA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="CRnnkCdkc5vBZf-O_mlA-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;div&gt;IO2 on&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;the heap&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;to pull&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;exactly&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;the&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;page(s)&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;we found&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;in the&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;index&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="170" x="610" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-19" edge="1" parent="1" source="CRnnkCdkc5vBZf-O_mlA-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="CRnnkCdkc5vBZf-O_mlA-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;div&gt;IO1 on&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;the index&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;to find the&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;page/row&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="230" x="90" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="CRnnkCdkc5vBZf-O_mlA-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=30;" value="&lt;div&gt;Index on&amp;nbsp;&lt;/div&gt;&lt;div&gt;EMP_ID&lt;/div&gt;" vertex="1">
+          <mxGeometry height="78" width="130" x="200" y="182" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

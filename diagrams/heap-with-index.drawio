@@ -1,0 +1,36 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Page-1" id="xsY6Tq8lLSU4J8BZ9DpA">
+    <mxGraphModel dx="1090" dy="1219" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#0000FF,#EDEDED);strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="520" width="190" x="680" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-2" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 0&lt;/h1&gt;&lt;p&gt;10 (1,0) | 20 (2,0) | 30 (3,0)&amp;nbsp;&lt;/p&gt;&lt;p&gt;40 (4,1) | 50 (5,1) | 60 (6,1)&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;70 (7,2) | 80 (8,2) | 90 (9,2)&lt;/span&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="133" width="170" x="690" y="187" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-3" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page 1&lt;/h1&gt;&lt;p&gt;100 (10,3) | 110 (11,3) | 120 (12,3)&amp;nbsp;&lt;/p&gt;&lt;p&gt;130 (13,4) | 140 (14,4) | 150 (15,4)&amp;nbsp;&lt;/p&gt;&lt;p&gt;160 (16,5) | 170 (17,5) | 180 (18,5)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="173" width="170" x="690" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-4" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;align=center;strokeColor=default;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Page N&lt;/h1&gt;&lt;p&gt;9920 (992,331) | 9930 (993,331) | 9940 (994,331)&amp;nbsp;&lt;/p&gt;&lt;p&gt;9950 (995,332) | 9960 (996,332) | 9970 (997,332)&amp;nbsp;&lt;/p&gt;&lt;p&gt;9980 (998,333) | 9990 (999,333) | 10000 (1000,333)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="177" width="170" x="690" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=30;" value="&lt;div&gt;Index on&amp;nbsp;&lt;/div&gt;&lt;div&gt;EMP_ID&lt;/div&gt;" vertex="1">
+          <mxGeometry height="78" width="130" x="530" y="187" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-10" edge="1" parent="1" source="HhdmH70_MRGX7f9Z9cVi-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="HhdmH70_MRGX7f9Z9cVi-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-11" connectable="0" parent="HhdmH70_MRGX7f9Z9cVi-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" value="&lt;div&gt;10000 (333, 1000)&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Fetch page 333, and pull row&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;10000&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0061" y="-4" as="geometry">
+            <mxPoint y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HhdmH70_MRGX7f9Z9cVi-8" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;With Index&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: 400; text-align: center; background-color: transparent;&quot;&gt;SELECT&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: 400; text-align: center;&quot;&gt;* FROM EMP&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: 400; text-align: center;&quot;&gt;WHERE EMP_ID =&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 12px; font-weight: 400; text-align: center;&quot;&gt;10000;&lt;/span&gt;&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="113" width="180" x="200" y="360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
